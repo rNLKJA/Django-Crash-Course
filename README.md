@@ -36,6 +36,12 @@ Django is a high-level Python web framework that encourages rapid development an
 
 > Server provides data to the client using API (Application Programming Interface).
 
+## Data Model
+
+Product: title, description, price, inventory
+Collection: title
+
+
 
 
 

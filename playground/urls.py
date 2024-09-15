@@ -1,7 +1,21 @@
-from django.urls import path
-from . import views  # from current directory import views
+"""
+urls.py is used to define the URL patterns of the app
+"""
 
-# URLConfig / urlpatterns is a list of URL patterns
+from django.urls import path
+from . import views
+
+# URLConf module: a module that contains URL patterns for an app
 urlpatterns = [
-    path(route='hello/', view=views.say_hello)  # path() is a function that takes in a route and a view function. http://localhost:8000/playground/hello/
+    path('hello/', views.say_hello)
 ]
+
+# urlpatterns is a list of path objects, each path object is a URL pattern
+# path(route, view, name=None)
+# route: URL pattern
+# view: function that handles the request
+# name: name of the URL pattern
+
+# URLConf module: a module that contains URL patterns for an app
+# URLConf: a configuration for URL patterns
+# URL dispatcher: a component that matches the incoming request to the correct view

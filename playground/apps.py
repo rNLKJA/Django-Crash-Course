@@ -1,3 +1,8 @@
+"""
+app.py is used to configure the app
+"""
+
+
 from django.apps import AppConfig
 
 

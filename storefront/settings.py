@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     # 'django.contrib.sessions',    # session framework
     'django.contrib.messages',      # display one time notification 
     'django.contrib.staticfiles',    # manage static files
-    # 'playground',                   # custom app, remove later
+    'playground',                   # custom app, remove later
+    'debug_toolbar',
+    'store',
+    'tags',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +52,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
 ]
 
 ROOT_URLCONF = 'storefront.urls'
