@@ -1,49 +1,108 @@
-# Django-Crash-Course
+<div align="center">
 
-<video src="https://www.youtube.com/watch?v=rHux0gMZ3Eg" width="320" height="200" controls preload></video>
+# Django Crash Course — Storefront
 
-## Why Django?
+Learning build of a Django **storefront** project, following Mosh Hamedani's "Python Django Tutorial for Beginners" crash course.
 
-Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
+[![Django](https://img.shields.io/badge/Django-5.1-092E20?logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue)](LICENSE)
+![Status](https://img.shields.io/badge/status-learning_build-orange)
 
-## Django Features
+</div>
 
-- **Ridiculously fast**: Django was designed to help developers take applications from concept to completion as quickly as possible.
-- **Reassuringly secure**: Django takes security seriously and helps developers avoid many common security mistakes.
-- **Exceedingly scalable**: Some of the busiest sites on the Web leverage Django’s ability to quickly and flexibly scale.
-- **Incredibly versatile**: Companies, organizations, and governments have used Django to build all sorts of things — from content management systems to social networks to scientific computing platforms.
-- **Easy to learn**: Django is designed to be fast and easy to learn.
-- **Fully loaded**: Django includes dozens of extras you can use to handle common Web development tasks. Django takes care of user authentication, content administration, site maps, RSS feeds, and many more tasks — right out of the box.
+## Overview
 
-## How the web works
+This repository is a hands-on learning project, not a finished product. It follows
+Mosh Hamedani's introductory Django crash course
+([video](https://www.youtube.com/watch?v=rHux0gMZ3Eg)) to scaffold a `storefront`
+project, and is kept as a personal reference for Django's core building blocks —
+projects vs apps, URL routing, views, templates, and the development setup.
 
-> Django is a framework for building web application using Python.
+The codebase is an early checkpoint of the course. The `playground` app is wired up
+end to end (a route, a view, and a template), while the `store` and `tag` apps are
+freshly scaffolded placeholders waiting for their models and views.
 
-- **Client**: Front-end (User Interface) -> React, Angular, Vue
-- **Server**: Back-end (Server) -> Django, Flask, Express
-- **Database**: Database (Data Storage) -> MySQL, PostgreSQL, SQLite
-- **HTTP**: Protocol (HyperText Transfer Protocol) -> GET, POST, PUT, DELETE
-- **API**: Application Programming Interface -> REST, GraphQL
-- **Deployment**: Hosting (Server) -> Heroku, AWS, Digital Ocean
-- **Domain**: Domain Name (Website) -> www.example.com
-- **SSL**: Secure Sockets Layer (Encryption) -> HTTPS
-- **DNS**: Domain Name System (IP Address) ->
-- **CI/CD**: Continuous Integration/Continuous Deployment -> GitHub Actions, Travis CI
-- **Monitoring**: Tracking (Performance) -> Sentry, New Relic
-- **Logging**: Recording (Errors) -> Loggly, Papertrail
-- **Testing**: Quality Assurance (QA) -> Unit Test, Integration Test
-- **Security**: Protection (Safety) -> Firewall, SSL, HTTPS
+## What's working
 
-> Server provides data to the client using API (Application Programming Interface).
+- **Project scaffolding** — a `storefront` Django project with `playground`, `store`,
+  and `tag` apps registered.
+- **Routing** — the project URLconf includes the `playground` app's routes and the
+  Django Debug Toolbar ([`storefront/urls.py`](storefront/urls.py),
+  [`playground/urls.py`](playground/urls.py)).
+- **A working view + template** — `say_hello` renders `hello.html`, which greets the
+  visitor by name or falls back to "Hello World"
+  ([`playground/views.py`](playground/views.py),
+  [`playground/templates/hello.html`](playground/templates/hello.html)).
+- **Dev tooling** — Django Debug Toolbar configured for local development, plus a
+  VS Code launch config that runs the dev server on port 9000.
 
-## Data Model
+## Still to do (tutorial in progress)
 
-Product: title, description, price, inventory
-Collection: title
+- `store` and `tag` apps have empty `models.py` and `views.py` — the product and
+  collection data model (`Product`: title, description, price, inventory;
+  `Collection`: title) is the next step in the course.
+- No migrations have been created yet, and there is no `requirements.txt`.
 
+## Tech stack
 
+| Layer      | Tools                                   |
+| ---------- | --------------------------------------- |
+| Framework  | Django 5.1                              |
+| Language   | Python 3.12                             |
+| Database   | SQLite (development default)            |
+| Templating | Django templates                        |
+| Dev tools  | Django Debug Toolbar, VS Code (debugpy) |
 
+## Getting started
 
+> Requires Python 3.12+ and Git.
 
+```bash
+# 1. Clone the repository
+git clone https://github.com/rNLKJA/Django-Crash-Course.git
+cd Django-Crash-Course
 
+# 2. Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate        # On Windows: venv\Scripts\activate
 
+# 3. Install Django and the Debug Toolbar
+pip install "django>=5.1" django-debug-toolbar
+
+# 4. Apply the built-in migrations
+python manage.py migrate
+
+# 5. Run the development server
+python manage.py runserver
+```
+
+Then open <http://127.0.0.1:8000/playground/hello/> to see the greeting page.
+
+> **Heads-up:** `INSTALLED_APPS` in [`storefront/settings.py`](storefront/settings.py)
+> currently lists `tags` (the app is named `tag`) and includes `debug_toolbar` twice.
+> If you hit an app-loading error on first run, that is the place to look — these are
+> left as-is to reflect the tutorial checkpoint faithfully.
+
+## Project layout
+
+```
+Django-Crash-Course/
+├── manage.py              # Django management entry point
+├── storefront/            # Project package (settings, URLs, WSGI/ASGI)
+├── playground/            # Demo app — working route, view, and template
+├── store/                 # Stub app — models/views to come
+└── tag/                   # Stub app — models/views to come
+```
+
+## Credits
+
+Built by following Mosh Hamedani's
+[Python Django Tutorial for Beginners](https://www.youtube.com/watch?v=rHux0gMZ3Eg)
+(Code with Mosh). This repo is for learning only.
+
+---
+
+The original course README is preserved at
+[`_archive/README.original.md`](_archive/README.original.md).
