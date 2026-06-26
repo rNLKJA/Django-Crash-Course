@@ -1,0 +1,12 @@
+node_modules/
+build/
+dist/
+vendor/
+_archive/
+staticfiles/
+**/*.min.*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+LICENSE
+**/templates/**
